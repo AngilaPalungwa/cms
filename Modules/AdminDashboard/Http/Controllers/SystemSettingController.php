@@ -2,20 +2,21 @@
 
 namespace Modules\AdminDashboard\Http\Controllers;
 
-use App\Models\User;
+use App\Services\SettingService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class AdminDashboardController extends Controller
+class SystemSettingController extends Controller
 {
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index( SettingService  $settingService)
     {
-        return view('admindashboard::index');
+
+        return view('admindashboard::system_setting',compact('settingService'));
     }
 
     /**

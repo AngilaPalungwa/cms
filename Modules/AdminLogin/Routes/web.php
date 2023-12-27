@@ -12,5 +12,7 @@
 */
 
 Route::prefix('adminlogin')->group(function() {
-    Route::get('/', 'AdminLoginController@index');
+    Route::get('/', 'AdminLoginController@index')->name('admin.login');
+    Route::post('submit', 'AdminLoginController@submit')->name('admin.login.submit');
+    Route::get('logout', 'AdminLoginController@logout')->name('admin.logout');
 });
