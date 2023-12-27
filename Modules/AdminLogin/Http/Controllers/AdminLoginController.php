@@ -17,6 +17,7 @@ class AdminLoginController extends Controller
      */
     public function index()
     {
+
         return view('adminlogin::login');
     }
 

@@ -18,8 +18,6 @@ class SettingService
        $this->systemName = $name->value;
        $this->logo = $name->value;
        $this->footer = $name->value;
-
-
     }
 
     public function getSystemName()

@@ -14,4 +14,5 @@
 Route::group(['prefix' =>'admindashboard','middleware' =>'admin'],function() {
     Route::get('/', 'AdminDashboardController@index')->name('admin.dashboard');
     Route::get('/system-setting', 'SystemSettingController@index')->name('system.setting');
+    Route::post('/system-setting-update', 'SystemSettingController@store')->name('system.settings.update');
 });

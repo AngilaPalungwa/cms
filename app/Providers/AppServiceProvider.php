@@ -26,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer(['backend.common.sidebar', 'backend.common.header'], function ($view){
+            $settings = app(SettingService::class);
+            $systemName =  $settings->getSystemName();
+            $view->with(compact('systemName'));
+        });
     }
 }
