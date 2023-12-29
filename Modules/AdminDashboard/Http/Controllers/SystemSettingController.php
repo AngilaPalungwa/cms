@@ -45,8 +45,8 @@ class SystemSettingController extends Controller
         if($request->has('logo') && $request->file('logo')){
             //check if exists
                 if(SettingUtils::get('system_logo')){
-                    if( file_exists(public_path().'/uploads'.SettingUtils::get('system_logo'))){
-                        unlink(public_path().'/uploads'.SettingUtils::get('system_logo'));
+                    if( file_exists(public_path().'/uploads/'.SettingUtils::get('system_logo'))){
+                        unlink(public_path().'/uploads/'.SettingUtils::get('system_logo'));
                     }
                 }
 

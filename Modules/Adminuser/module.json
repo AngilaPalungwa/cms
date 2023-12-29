@@ -1,0 +1,13 @@
+{
+    "name": "Adminuser",
+    "alias": "adminuser",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Adminuser\\Providers\\AdminuserServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
