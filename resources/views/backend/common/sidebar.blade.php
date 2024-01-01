@@ -25,6 +25,15 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
+                    <a href="{{ url('/') }}" class="nav-link" target="_blank">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Website
+
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.dashboard') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>

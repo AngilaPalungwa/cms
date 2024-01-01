@@ -1,5 +1,6 @@
 {
     "AdminDashboard": true,
     "AdminLogin": true,
-    "Adminuser": true
+    "Adminuser": true,
+    "Login": true
 }

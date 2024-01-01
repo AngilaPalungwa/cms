@@ -61,6 +61,8 @@ class SystemSettingController extends Controller
         SettingUtils::set('system_phone',$request->phone);
         SettingUtils::set('system_footer',$request->footer);
         SettingUtils::set('system_logo',$logoName);
+        SettingUtils::set('system_facebook',$request->facebook);
+        SettingUtils::set('system_insta',$request->insta);
 
         return  redirect()->back();
 

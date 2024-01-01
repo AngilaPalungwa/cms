@@ -36,6 +36,23 @@
                     <span style="color: red">{{ $errors->first('footer') }}</span>
                 @endif
             </div>
+
+            <div class="form-group">
+                <label for="facebook">Facebook</label>
+                <input type="text" class="form-control" id="facebook" placeholder="Facebook" name="facebook" value="{{  \App\Utils\SettingUtils::get('system_facebook') }}">
+                @if($errors->first('facebook'))
+                    <span style="color: red">{{ $errors->first('facebook') }}</span>
+                @endif
+            </div>
+
+
+            <div class="form-group">
+                <label for="insta">Instagram</label>
+                <input type="text" class="form-control" id="insta" placeholder="insta" name="insta" value="{{  \App\Utils\SettingUtils::get('system_insta') }}">
+                @if($errors->first('insta'))
+                    <span style="color: red">{{ $errors->first('insta') }}</span>
+                @endif
+            </div>
             <div class="form-group">
                 <label for="exampleInputFile">Logo</label>
                 <div class="input-group">
