@@ -11,9 +11,6 @@
 |
 */
 
-Route::prefix('login')->group(function() {
-    Route::get('/', 'LoginController@index')->name('login');
-    Route::post('/submit', 'LoginController@submit')->name('frontend.login');
-    Route::get('/register', 'RegisterController@register')->name('frontend.register');
-    Route::post('/register-submit', 'RegisterController@submit')->name('register.submit');
+Route::prefix('category')->group(function() {
+    Route::get('/', 'CategoryController@index')->name('category');
 });

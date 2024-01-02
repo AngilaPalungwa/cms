@@ -61,6 +61,16 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('category') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Category
+
+                        </p>
+                    </a>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

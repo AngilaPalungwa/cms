@@ -4,7 +4,7 @@
             <nav class="navbar navbar-expand-sm bg-dark p-0">
                 <ul class="navbar-nav ml-n2">
                     <li class="nav-item border-right border-secondary">
-                        <a class="nav-link text-body small" href="#">{{ \Carbon\Carbon::parse(now())->format('D-M-Y') }}</a>
+                        <a class="nav-link text-body small" href="{{ url('/') }}">{{ \Carbon\Carbon::parse(now())->format('D-M-Y') }}</a>
                     </li>
 
                     @if(!auth()->check())
@@ -16,7 +16,7 @@
                        Welcome, {{  auth()->user()->name }}
                     @else
                         <li class="nav-item">
-                            <a class="nav-link text-body small" href="#">Register</a>
+                            <a class="nav-link text-body small" href="{{ route('frontend.register') }}">Register</a>
                         </li>
                     @endif
                 </ul>
@@ -49,12 +49,12 @@
     </div>
     <div class="row align-items-center bg-white py-3 px-lg-5">
         <div class="col-lg-4">
-            <a href="index.html" class="navbar-brand p-0 d-none d-lg-block">
+            <a href="{{ url('/') }}" class="navbar-brand p-0 d-none d-lg-block">
                 <h1 class="m-0 display-4 text-uppercase text-primary"><span class="text-secondary font-weight-normal">{{ \App\Utils\SettingUtils::get('system_name') }}</span></h1>
             </a>
         </div>
         <div class="col-lg-8 text-center text-lg-right">
-            <a href="https://htmlcodex.com"><img class="img-fluid" src="img/ads-728x90.png" alt=""></a>
+            <a href="{{ url('/') }}"><img class="img-fluid" src="img/ads-728x90.png" alt=""></a>
         </div>
     </div>
 </div>

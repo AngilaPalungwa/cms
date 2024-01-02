@@ -2,5 +2,7 @@
     "AdminDashboard": true,
     "AdminLogin": true,
     "Adminuser": true,
-    "Login": true
+    "Login": true,
+    "Category": true,
+    "Post": true
 }

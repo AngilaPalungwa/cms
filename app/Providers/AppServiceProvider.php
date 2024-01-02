@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\SettingService;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
         view()->composer(['backend.common.sidebar', 'backend.common.header'], function ($view){
             $settings = app(SettingService::class);
             $systemName =  $settings->getSystemName();
