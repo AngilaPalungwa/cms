@@ -16,4 +16,11 @@ Route::prefix('login')->group(function() {
     Route::post('/submit', 'LoginController@submit')->name('frontend.login');
     Route::get('/register', 'RegisterController@register')->name('frontend.register');
     Route::post('/register-submit', 'RegisterController@submit')->name('register.submit');
+    Route::get('/password-forget', 'ResetPasswordController@index')->name('login.forget');
+    Route::post('/password-reset', 'ResetPasswordController@resetPassword')->name('login.forget.reset');
+    Route::get('/show-reset/{token}', 'ResetPasswordController@showResetForm')->name('login.forget.form');
+    Route::post('/handle-reset/{token}', 'ResetPasswordController@handleReset')->name('login.forget.handle');
+
+
+
 });

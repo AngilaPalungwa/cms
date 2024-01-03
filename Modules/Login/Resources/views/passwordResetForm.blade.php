@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,10 +19,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -35,7 +34,13 @@
 <!-- Navbar Start -->
 @include('frontend.common.nav')
 
-<form  action="{{ route('frontend.login') }}" method="post">
+
+@if(session()->has('success'))
+<div class="alert-success">
+    {{ session('success') }}
+</div>
+@endif
+<form action="{{ route('login.forget.reset') }}" method="post">
 
     @csrf
     <div class="form-row">
@@ -43,22 +48,19 @@
         <div class="col-md-6">
             <div class="form-group">
                 <input type="email" class="form-control p-4" placeholder="Your Email" required="required" name="email"/>
+                @if($errors->first('email'))
+                    <span style="color: red"> {{ $errors->first('email') }}</span>
+                @endif
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        <input type="password" class="form-control p-4" placeholder="Password" required="required" name="password"/>
     </div>
 
     <div>
         <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;"
-                type="submit">Login</button>
+                type="submit">Submit
+        </button>
     </div>
 </form>
-
-<div class="row">
-    <a href="{{ route('login.forget') }}"  class="btn btn-primary btn-square">Forgot Password?</a>
-</div>
 
 
 <!-- Footer Start -->
