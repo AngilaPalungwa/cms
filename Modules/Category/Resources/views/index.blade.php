@@ -9,25 +9,41 @@
     @if(session()->has('error'))
         <div class="alert-danger"> {{ session('error') }}</div>
     @endif
-    <a class="btn btn-primary" href="#"> Create New</a>
+    <a class="btn btn-primary" href="{{ route('category.create') }}"> Create New</a>
     <hr>
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Category</h3>
+                    <a href="{{ route('category') }}">
+
+                        <h3 class="card-title fw-bold text-dark">Category</h3>
+                    </a>
 
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <form action="{{ route('users.index') }}" method="GET">
-                                @csrf
-                                <input type="text" name="search" class="form-control float-right" placeholder="Search">
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group input-group-sm m-1" style="width: 175px;">
+                                    <form action="{{ route('category') }}" method="GET">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="text" name="search" class="form-control float-right" placeholder="Search" >
+                                            </div>
+                                            <div class="col input-group-append">
+                                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                            </div>
+                                        </div>
 
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                    </form>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="col">
+                                <a href="{{ route('category.create') }}" class="float-end btn btn-info"><i
+                                        class="fas fa-plus"></i><span class="hide-menu ps-2">Create Category </span></a>
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -47,7 +63,8 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->status }}</td>
-                                <td><a href="{{ route('users.edit', $category->id) }}"  class="btn btn-primary">Edit </a> <a href="{{ route('users.edit', $category->id) }}" class="btn btn-danger">Delete</a> </td>
+                                <td><a href="{{ route('category.edit', $category->id) }}"  class="btn btn-primary">Edit </a>
+                                    <a href="{{ route('category.delete', $category->id) }}" class="btn btn-danger">Delete</a> </td>
                             </tr>
                         @empty
                             <tr><td>NO Category</td></tr>
