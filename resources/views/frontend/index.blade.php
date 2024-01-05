@@ -41,39 +41,20 @@
     <div class="row">
         <div class="col-lg-7 px-0">
             <div class="owl-carousel main-carousel position-relative">
-                <div class="position-relative overflow-hidden" style="height: 500px;">
-                    <img class="img-fluid h-100" src="img/news-800x500-1.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                               href="">Business</a>
-                            <a class="text-white" href="">Jan 01, 2045</a>
+                @forelse($categories as $category)
+                    <div class="position-relative overflow-hidden" style="height: 500px;">
+                        <img class="img-fluid h-100" src="img/news-800x500-1.jpg" style="object-fit: cover;">
+                        <div class="overlay">
+                            <div class="mb-2">
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                   href="">{{ $category->name }}</a>
+                                <a class="text-white" href="">{{ $category->created_at }}</a>
+                            </div>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
                         </div>
-                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
                     </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 500px;">
-                    <img class="img-fluid h-100" src="img/news-800x500-2.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                               href="">Business</a>
-                            <a class="text-white" href="">Jan 01, 2045</a>
-                        </div>
-                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 500px;">
-                    <img class="img-fluid h-100" src="img/news-800x500-3.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                               href="">Business</a>
-                            <a class="text-white" href="">Jan 01, 2045</a>
-                        </div>
-                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                    </div>
-                </div>
+                @empty
+                @endforelse
             </div>
         </div>
         <div class="col-lg-5 px-0">
@@ -146,8 +127,11 @@
                     <div class="bg-primary text-dark text-center font-weight-medium py-2" style="width: 170px;">Breaking News</div>
                     <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center ml-3"
                          style="width: calc(100% - 170px); padding-right: 90px;">
-                        <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
-                        <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
+                        @forelse($breakings->posts as $breaking)
+                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">{{ $breaking->title }}</a></div>
+                        @empty
+
+                        @endforelse
                     </div>
                 </div>
             </div>

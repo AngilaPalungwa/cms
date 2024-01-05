@@ -51,11 +51,12 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $post->title }}</td>
-                                <td>{{ $post->title }}</td>
+                                <td>{{ $post->category->name }}</td>
                                 <td>{{ $post->slug }}</td>
-                                <td>{{ $post->description }}</td>
+                                <td>{!! $post->description !!}  </td>
                                 <td>{{ $post->status }}</td>
-                                <td>{{ $post->created_by }}</td>
+                                <td>{{ $post->status }}</td>
+                                <td>{{ $post->author->name }}</td>
                                 <td><a href="{{ route('users.edit', $post->id) }}"  class="btn btn-primary">Edit </a> <a href="{{ route('users.edit', $post->id) }}" class="btn btn-danger">Delete</a> </td>
                             </tr>
                         @empty
