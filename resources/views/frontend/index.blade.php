@@ -41,16 +41,16 @@
     <div class="row">
         <div class="col-lg-7 px-0">
             <div class="owl-carousel main-carousel position-relative">
-                @forelse($categories as $category)
+                @forelse($posts as $post)
                     <div class="position-relative overflow-hidden" style="height: 500px;">
                         <img class="img-fluid h-100" src="img/news-800x500-1.jpg" style="object-fit: cover;">
                         <div class="overlay">
                             <div class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                   href="">{{ $category->name }}</a>
-                                <a class="text-white" href="">{{ $category->created_at }}</a>
+                                   href="">{{ $post->category->name }}</a>
+                                <a class="text-white" href="{{ route('post.detail', $post->slug)  }}"  target="_blank">{{ $post->created_at }}</a>
                             </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">{{ \Illuminate\Support\Str::limit($post->title,50,'...') }}</a>
                         </div>
                     </div>
                 @empty
@@ -59,58 +59,23 @@
         </div>
         <div class="col-lg-5 px-0">
             <div class="row mx-0">
+                @forelse($posts as $post)
                 <div class="col-md-6 px-0">
                     <div class="position-relative overflow-hidden" style="height: 250px;">
                         <img class="img-fluid w-100 h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
                         <div class="overlay">
                             <div class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                   href="">Business</a>
-                                <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                                   href="{{ route('post.detail', $post->slug)  }}">{{ $post->category->name }}</a>
+                                <a class="text-white" href="{{ route('post.detail', $post->slug)  }}"><small>{{ $post->created_at }}</small></a>
                             </div>
-                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{ \Illuminate\Support\Str::limit($post->title,30,'...') }}</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 px-0">
-                    <div class="position-relative overflow-hidden" style="height: 250px;">
-                        <img class="img-fluid w-100 h-100" src="img/news-700x435-2.jpg" style="object-fit: cover;">
-                        <div class="overlay">
-                            <div class="mb-2">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                   href="">Business</a>
-                                <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                            </div>
-                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 px-0">
-                    <div class="position-relative overflow-hidden" style="height: 250px;">
-                        <img class="img-fluid w-100 h-100" src="img/news-700x435-3.jpg" style="object-fit: cover;">
-                        <div class="overlay">
-                            <div class="mb-2">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                   href="">Business</a>
-                                <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                            </div>
-                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 px-0">
-                    <div class="position-relative overflow-hidden" style="height: 250px;">
-                        <img class="img-fluid w-100 h-100" src="img/news-700x435-4.jpg" style="object-fit: cover;">
-                        <div class="overlay">
-                            <div class="mb-2">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                   href="">Business</a>
-                                <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                            </div>
-                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                @endforelse
+
             </div>
         </div>
     </div>
@@ -127,8 +92,8 @@
                     <div class="bg-primary text-dark text-center font-weight-medium py-2" style="width: 170px;">Breaking News</div>
                     <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center ml-3"
                          style="width: calc(100% - 170px); padding-right: 90px;">
-                        @forelse($breakings->posts as $breaking)
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">{{ $breaking->title }}</a></div>
+                        @forelse($breakings as $breaking)
+                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="{{ route('post.detail', $post->slug)  }}">{{ $breaking->title }}</a></div>
                         @empty
 
                         @endforelse
@@ -148,61 +113,23 @@
             <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
         </div>
         <div class="owl-carousel news-carousel carousel-item-4 position-relative">
-            <div class="position-relative overflow-hidden" style="height: 300px;">
-                <img class="img-fluid h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
-                <div class="overlay">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                           href="">Business</a>
-                        <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+            @forelse($featured as $feature)
+                <div class="position-relative overflow-hidden" style="height: 300px;">
+                    <img class="img-fluid h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
+                    <div class="overlay">
+                        <div class="mb-2">
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                               href="">Business</a>
+                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                        </div>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ route('post.detail',$feature->slug) }}">{{ $feature->title }}</a>
                     </div>
-                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
                 </div>
-            </div>
-            <div class="position-relative overflow-hidden" style="height: 300px;">
-                <img class="img-fluid h-100" src="img/news-700x435-2.jpg" style="object-fit: cover;">
-                <div class="overlay">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                           href="">Business</a>
-                        <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                </div>
-            </div>
-            <div class="position-relative overflow-hidden" style="height: 300px;">
-                <img class="img-fluid h-100" src="img/news-700x435-3.jpg" style="object-fit: cover;">
-                <div class="overlay">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                           href="">Business</a>
-                        <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                </div>
-            </div>
-            <div class="position-relative overflow-hidden" style="height: 300px;">
-                <img class="img-fluid h-100" src="img/news-700x435-4.jpg" style="object-fit: cover;">
-                <div class="overlay">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                           href="">Business</a>
-                        <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                </div>
-            </div>
-            <div class="position-relative overflow-hidden" style="height: 300px;">
-                <img class="img-fluid h-100" src="img/news-700x435-5.jpg" style="object-fit: cover;">
-                <div class="overlay">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                           href="">Business</a>
-                        <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                </div>
-            </div>
+            @empty
+
+            @endforelse
+
+
         </div>
     </div>
 </div>
@@ -574,16 +501,11 @@
                     </div>
                     <div class="bg-white border border-top-0 p-3">
                         <div class="d-flex flex-wrap m-n1">
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Health</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Education</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Science</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
+                            @forelse($tags as $tag)
+                                <a href="" class="btn btn-sm btn-outline-secondary m-1">{{ $tag->name }}</a>
+                            @empty
+                            @endforelse
+
                         </div>
                     </div>
                 </div>

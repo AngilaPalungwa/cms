@@ -36,6 +36,28 @@ class PostController extends Controller
      * Show the form for creating a new resource.
      * @return Renderable
      */
+
+    function details($slug)
+    {
+
+        if(!$slug){
+            return  redirect()->back();
+        }
+
+        $data['post'] =  Post::where('slug', $slug)->first();
+        $data['trendings'] = Post::with(['category' => function ($query) {
+            $query->where('name','trending');
+        }])->take(2)->get();
+        if($data['post']){
+            return view('frontend.postDetails', $data);
+        }
+
+        session()->flash('error','Something Went Wrong!');
+        return  redirect()->route('home');
+
+    }
+
+
     public function create()
     {
         $data['categories'] = Category::all();
