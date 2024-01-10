@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public  function index()
     {
-      $data['posts'] =  Post::with(['category','author' => function ($query) {
+      $data['posts'] =  Post::with(['category','comments','comments.replies','author' => function ($query) {
           $query->select('id', 'name')->with('profile:profile');
       }])->latest()->take(5)->get();
 
