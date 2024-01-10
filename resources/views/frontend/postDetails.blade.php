@@ -60,7 +60,7 @@
 </div>
 <!-- Breaking News End -->
 
-
+{{ \App\Utils\Helpers::increaseViews($post->id) }}
 <!-- News With Sidebar Start -->
 <div class="container-fluid">
     <div class="container">
@@ -85,7 +85,7 @@
                             <span>John Doe</span>
                         </div>
                         <div class="d-flex align-items-center">
-                            <span class="ml-3"><i class="far fa-eye mr-2"></i>12345</span>
+                            <span class="ml-3"><i class="far fa-eye mr-2"></i>{{ $post->views }}</span>
                             <span class="ml-3"><i class="far fa-comment mr-2"></i>123</span>
                         </div>
                     </div>
@@ -296,25 +296,7 @@
                 <!-- Newsletter End -->
 
                 <!-- Tags Start -->
-                <div class="mb-3">
-                    <div class="section-title mb-0">
-                        <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
-                    </div>
-                    <div class="bg-white border border-top-0 p-3">
-                        <div class="d-flex flex-wrap m-n1">
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Health</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Education</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Science</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
-                        </div>
-                    </div>
-                </div>
+               @include('frontend.tags')
                 <!-- Tags End -->
             </div>
         </div>

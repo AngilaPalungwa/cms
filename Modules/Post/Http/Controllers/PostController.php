@@ -48,6 +48,10 @@ class PostController extends Controller
         $data['trendings'] = Post::with(['category' => function ($query) {
             $query->where('name','trending');
         }])->take(2)->get();
+        $data['tags'] =  Category::latest()->take(10)->get();
+        $data['posts'] =  Post::with(['category','author' => function ($query) {
+            $query->select('id', 'name')->with('profile:profile');
+        }])->latest()->take(5)->get();
         if($data['post']){
             return view('frontend.postDetails', $data);
         }
