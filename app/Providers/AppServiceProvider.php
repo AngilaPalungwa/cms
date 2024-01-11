@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+use App\Models\Post;
 use App\Services\SettingService;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
@@ -32,6 +34,12 @@ class AppServiceProvider extends ServiceProvider
             $settings = app(SettingService::class);
             $systemName =  $settings->getSystemName();
             $view->with(compact('systemName'));
+        });
+
+        view()->composer(['frontend.common.footer'], function ($view){
+            $data['tags'] =Category::take(10)->get();
+            $data['posts'] =  Post::orderByDesc('views')->take(5)->get();
+            $view->with($data);
         });
     }
 }

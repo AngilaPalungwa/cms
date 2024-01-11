@@ -16,52 +16,27 @@
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
             <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular News</h5>
-            <div class="mb-3">
-                <div class="mb-2">
-                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+
+            @forelse($posts as $post)
+                <div class="mb-3">
+                    <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">{{$post->category->name}}</a>
+                        <a class="text-body" href=""><small>{{ \Illuminate\Support\Carbon::parse($post->create_at)->format('D-M-Y') }}</small></a>
+                    </div>
+                    <a class="small text-body text-uppercase font-weight-medium" href="{{ route('post.detail', $post->slug) }}">{{ \Illuminate\Support\Str::limit($post->title,30,'.....') }}</a>
                 </div>
-                <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-            </div>
-            <div class="mb-3">
-                <div class="mb-2">
-                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                </div>
-                <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-            </div>
-            <div class="">
-                <div class="mb-2">
-                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                </div>
-                <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-            </div>
+            @empty
+            @endforelse
+
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
             <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
             <div class="m-n1">
-                <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Entertainment</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Travel</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Lifestyle</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
+                @forelse($tags as $tag)
+                    <a href="{{ route('cat.search.name', $tag->name) }}" class="btn btn-sm btn-secondary m-1">{{ $tag->name }}</a>
+                @empty
+                @endforelse
+
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
