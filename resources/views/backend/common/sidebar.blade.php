@@ -26,7 +26,7 @@
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="{{ url('/') }}" class="nav-link" target="_blank">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-solid fa-globe"></i>
                         <p>
                             Website
 
@@ -63,7 +63,7 @@
 
                 <li class="nav-item">
                     <a href="{{ route('category') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                        <i class="nav-icon fas fa-solid fa-list"></i>
                         <p>
                             Category
 
@@ -73,7 +73,7 @@
 
                 <li class="nav-item">
                     <a href="{{ route('posts') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                        <i class="nav-icon fas fa-regular fa-newspaper"></i>
                         <p>
                             Posts
 

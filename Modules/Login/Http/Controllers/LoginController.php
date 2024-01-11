@@ -98,8 +98,12 @@ class LoginController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function logout(Request $request)
     {
-        //
+        if(auth()->check()){
+            Auth::logout();
+            $request->session()->flash('success','Logged Out');
+            return redirect()->route('login');
+        }
     }
 }

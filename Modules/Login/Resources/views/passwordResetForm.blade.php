@@ -40,27 +40,43 @@
     {{ session('success') }}
 </div>
 @endif
-<form action="{{ route('login.forget.reset') }}" method="post">
-
-    @csrf
-    <div class="form-row">
-
-        <div class="col-md-6">
-            <div class="form-group">
-                <input type="email" class="form-control p-4" placeholder="Your Email" required="required" name="email"/>
-                @if($errors->first('email'))
-                    <span style="color: red"> {{ $errors->first('email') }}</span>
-                @endif
+ <!-- Contact Start -->
+ <div class="container-fluid mt-5 pt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            @if (session()->has('success'))
+            <div class="alert-success">
+                {{ session('success') }}
             </div>
+
+            @endif
+            <div class="col-lg-6 ">
+                <div class="bg-white border border-top-0 p-4 mb-5 text-dark">
+
+                    <h4 class="text-uppercase font-weight-bold mb-3">Reset Password</h4>
+                    <form action="{{ route('login.forget.reset') }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label class="form-label">Enter Email address</label>
+                            <input type="text" class="form-control p-4" name="email" placeholder="Your Email"
+                                required="required" />
+                                @if ($errors->first('email'))
+                                <span style="color: red">{{ $errors->first('email') }}</span>
+                            @endif
+                        </div>
+
+                        <div>
+                            <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;"
+                                type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
-
-    <div>
-        <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;"
-                type="submit">Submit
-        </button>
-    </div>
-</form>
+</div>
+<!-- Contact End -->
 
 
 <!-- Footer Start -->

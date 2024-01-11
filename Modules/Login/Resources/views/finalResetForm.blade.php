@@ -41,43 +41,56 @@
     </div>
 @endif
 
-<form action="{{ route('login.forget.handle', $token) }}" method="post">
+<div class="container-fluid mt-5 pt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 ">
+                <div class="bg-white border border-top-0 p-4 mb-5 text-dark">
 
-    @csrf
-    <div class="form-row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <input type="email" class="form-control p-4" placeholder="email" required="required" name="email"/>
-                @if($errors->first('email'))
-                    <span style="color: red"> {{ $errors->first('email') }}</span>
-                @endif
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <input type="password" class="form-control p-4" placeholder="Your New password" required="required" name="password"/>
-                @if($errors->first('password'))
-                    <span style="color: red"> {{ $errors->first('password') }}</span>
-                @endif
-            </div>
-        </div>
+                    <h4 class="text-uppercase font-weight-bold mb-3">Reset Password</h4>
+                    <form action="{{ route('login.forget.handle',$token) }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label class="form-label">Email address</label>
+                            <input type="email" class="form-control p-4" name="email" placeholder="Your Email"
+                                required="required" />
+                                @if ($errors->first('email'))
+                                <span style="color: red">{{ $errors->first('email') }}</span>
+                            @endif
 
-        <div class="col-md-6">
-            <div class="form-group">
-                <input type="password" class="form-control p-4" placeholder="Confirm Password" required="required" name="password_confirmation"/>
-                @if($errors->first('password_confirmation'))
-                    <span style="color: red"> {{ $errors->first('password_confirmation') }}</span>
-                @endif
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">New Password</label>
+                            <input type="password" class="form-control p-4" name="password"
+                                placeholder="Your New Password" required="required" />
+                                @if ($errors->first('password'))
+                                <span style="color: red">{{ $errors->first('password') }}</span>
+                            @endif
+
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control p-4" name="password_confirmation"
+                                placeholder="Your Password" required="required" />
+                                @if ($errors->first('password_confirmation'))
+                                <span style="color: red">{{ $errors->first('password_confirmation') }}</span>
+                            @endif
+                        </div>
+                        <div>
+                            <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;"
+                                type="submit">Reset</button>
+                        </div>
+                    </form>
+                    <div class="mt-2">
+
+                        <a href="{{ route('login.forget') }}" >Forgot Password?</a>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
-
-    <div>
-        <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;"
-                type="submit">Submit
-        </button>
-    </div>
-</form>
+</div>
 
 
 <!-- Footer Start -->
