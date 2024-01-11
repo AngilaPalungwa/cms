@@ -21,6 +21,9 @@ Route::prefix('login')->group(function() {
     Route::get('/show-reset/{token}', 'ResetPasswordController@showResetForm')->name('login.forget.form');
     Route::post('/handle-reset/{token}', 'ResetPasswordController@handleReset')->name('login.forget.handle');
 
+    Route::get('/logout','LoginController@logout')->name('logout');
+
+
 
 
 });

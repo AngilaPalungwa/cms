@@ -34,82 +34,77 @@
 <!-- Navbar Start -->
 @include('frontend.common.nav')
 
-<form action="{{ route('register.submit') }}" method="post">
+  <!-- Contact Start -->
+  <div class="container-fluid mt-5 pt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 ">
+                <div class="bg-white border border-top-0 p-4 mb-5">
 
-    @csrf
-    <div class="form-row">
+                    <h4 class="text-uppercase font-weight-bold mb-3">Register</h4>
+                    <form action="{{ route('register.submit') }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label class="form-label">Email address</label>
+                            <input type="text" class="form-control p-4" name="email" placeholder="Your Email"
+                                required="required" />
+                                @if ($errors->first('email'))
+                                    <span style="color: red">{{ $errors->first('email') }}</span>
+                                @endif
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="form-control p-4" name="username" placeholder="Your username"
+                                required="required" />
+                                @if ($errors->first('username'))
+                                <span style="color: red">{{ $errors->first('username') }}</span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control p-4" name="name" placeholder="Your name"
+                                required="required" />
+                                @if ($errors->first('name'))
+                                <span style="color: red">{{ $errors->first('name') }}</span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control p-4" name="password"
+                                placeholder="Your Password" required="required" />
+                                @if ($errors->first('password'))
+                                <span style="color: red">{{ $errors->first('password') }}</span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Address</label>
+                            <input type="text" class="form-control p-4" name="address" placeholder="Your address"
+                                required="required" />
+                                @if ($errors->first('address'))
+                                <span style="color: red">{{ $errors->first('address') }}</span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Designation</label>
+                            <input type="text" class="form-control p-4" name="designation" placeholder="Your designation"
+                                required="required" />
+                                @if ($errors->first('designation'))
+                                <span style="color: red">{{ $errors->first('designation') }}</span>
+                            @endif
+                        </div>
 
-        <div class="col-md-6">
-            <div class="form-group">
-                <input type="email" class="form-control p-4" placeholder="Your Email" required="required" name="email"/>
-                @if($errors->first('email'))
-                    <span style="color: red"> {{ $errors->first('email') }}</span>
-                @endif
+                        <div>
+                            <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;"
+                                type="submit">Register</button>
+                        </div>
+                    </form>
+                </div>
             </div>
+
         </div>
     </div>
-    <div class="form-row">
-
-        <div class="col-md-6">
-            <div class="form-group">
-                <input type="text" class="form-control p-4" placeholder="Your Username" required="required"
-                       name="username"/>
-                @if($errors->first('username'))
-                    <span style="color: red"> {{ $errors->first('username') }}</span>
-                @endif
-            </div>
-        </div>
-    </div>
-    <div class="form-row">
-
-        <div class="col-md-6">
-            <div class="form-group">
-                <input type="text" class="form-control p-4" placeholder="Your Name" required="required" name="name"/>
-                @if($errors->first('name'))
-                    <span style="color: red"> {{ $errors->first('name') }}</span>
-                @endif
-            </div>
-        </div>
-    </div>
-
-    <div class="form-row">
-
-        <div class="col-md-6">
-            <div class="form-group">
-                <input type="text" class="form-control p-4" placeholder="Your Address" required="required" name="address"/>
-                @if($errors->first('address'))
-                    <span style="color: red"> {{ $errors->first('address') }}</span>
-                @endif
-            </div>
-        </div>
-    </div>
-
-    <div class="form-row">
-
-        <div class="col-md-6">
-            <div class="form-group">
-                <input type="text" class="form-control p-4" placeholder="Your Designation" required="required" name="designation"/>
-                @if($errors->first('designation'))
-                    <span style="color: red"> {{ $errors->first('designation') }}</span>
-                @endif
-            </div>
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <input type="password" class="form-control p-4" placeholder="Password" required="required" name="password"/>
-        @if($errors->first('password'))
-            <span style="color: red"> {{ $errors->first('password') }}</span>
-        @endif
-    </div>
-
-    <div>
-        <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;"
-                type="submit">Register
-        </button>
-    </div>
-</form>
+</div>
+<!-- Contact End -->
 
 
 <!-- Footer Start -->
