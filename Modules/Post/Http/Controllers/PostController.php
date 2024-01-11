@@ -44,7 +44,7 @@ class PostController extends Controller
             return  redirect()->back();
         }
 
-        $data['post'] =  Post::where('slug', $slug)->first();
+        $data['post'] =  Post::with('category','author','comments','comments.replies')->where('slug', $slug)->first();
         $data['trendings'] = Post::with(['category' => function ($query) {
             $query->where('name','trending');
         }])->take(2)->get();

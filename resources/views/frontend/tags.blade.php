@@ -5,7 +5,7 @@
     <div class="bg-white border border-top-0 p-3">
         <div class="d-flex flex-wrap m-n1">
             @forelse($tags as $tag)
-                <a href="" class="btn btn-sm btn-outline-secondary m-1">{{ $tag->name }}</a>
+                <a href="{{ route('cat.search.name', $tag->name) }}" class="btn btn-sm btn-outline-secondary m-1">{{ $tag->name }}</a>
             @empty
             @endforelse
 
