@@ -18,6 +18,7 @@ Route::get('/news-details/{slug}',[\Modules\Post\Http\Controllers\PostController
 Route::post('/search',[\App\Http\Controllers\HomeController::class,'searchPost'])->name('home.search');
 Route::get('/search/{name}',[\App\Http\Controllers\HomeController::class,'searchByCategory'])->name('cat.search.name');
 Route::post('/newsletter',[\App\Http\Controllers\HomeController::class,'newsLetter'])->name('newsletter');
+Route::get('/apiusers',[\App\Http\Controllers\HomeController::class,'getUsers']);
 
 Route::group(['prefix' =>'admin'], function () {
     Route::view('dashboard', 'welcome');

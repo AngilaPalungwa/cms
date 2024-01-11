@@ -13,6 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/category', function (Request $request) {
-    return $request->user();
-});
+Route::get('/category', [\Modules\Category\Http\Controllers\CategoryApiController::class,'index']);
+Route::get('/category/{id}', [\Modules\Category\Http\Controllers\CategoryApiController::class,'getDetail']);

@@ -6,6 +6,7 @@ use App\Mail\SubscribeMail;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -68,6 +69,15 @@ class HomeController extends Controller
         Mail::to($request->email)->send(new SubscribeMail());
         $request->session()->flash('success','Subscribed');
         return redirect()->route('home');
+
+    }
+
+    public  function getUsers()
+    {
+        $url = 'https://anishansari.com.np/users';
+        $users =  Http::get($url)->json();
+        dd($users);
+
 
     }
 }

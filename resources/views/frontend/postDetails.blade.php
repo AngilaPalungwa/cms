@@ -109,7 +109,6 @@
                                         <p >{{ $reply->content }}</p>
                                     @empty
                                     @endforelse
-
                                 </div>
                             </div>
                         @empty
