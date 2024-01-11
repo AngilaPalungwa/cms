@@ -9,24 +9,38 @@
     @if(session()->has('error'))
         <div class="alert-danger"> {{ session('error') }}</div>
     @endif
-    <a class="btn btn-primary" href="{{ route('posts.create') }}"> Create New</a>
-    <hr>
+
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Post</h3>
+                    <a href="{{ route('posts') }}">
+
+                        <h3 class="card-title fw-bold text-dark">Posts</h3>
+                    </a>
 
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <form action="{{ route('posts') }}" method="GET">
-                                @csrf
-                                <input type="text" name="search" class="form-control float-right" placeholder="Search">
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group input-group-sm m-1" style="width: 200px;">
+                                    <form action="{{ route('posts') }}" method="GET">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="text" name="search" class="form-control float-right" placeholder="Search" >
+                                            </div>
+                                            <div class="col input-group-append">
+                                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                            </div>
+                                        </div>
 
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                    </form>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="col">
+                                <a href="{{ route('posts.create') }}" class="float-end btn btn-info"><i
+                                        class="fas fa-plus"></i><span class="hide-menu ps-2">Create New Post </span></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -57,7 +71,11 @@
                                 <td>{{ $post->status }}</td>
                                 <td>{{ $post->status }}</td>
                                 <td>{{ $post->author->name }}</td>
-                                <td><a href="{{ route('users.edit', $post->id) }}"  class="btn btn-primary">Edit </a> <a href="{{ route('users.edit', $post->id) }}" class="btn btn-danger">Delete</a> </td>
+                                <td>
+                                    <a href="{{ route('post.edit', $post->id) }} " class="btn btn-success">Edit</a>
+                                    <a href="{{ route('post.delete', $post->id) }} " class="btn btn-danger">Delete</a>
+
+                                </td>
                             </tr>
                         @empty
                             <tr><td>NO POST</td></tr>
